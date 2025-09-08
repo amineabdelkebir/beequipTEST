@@ -55,9 +55,11 @@ test('Beequip full user journey', async ({ page }) => {
 
   const after = await leasePage.getMonthlyPrice();
 
+
+  /* to complete 
   // Allow equality in case UI rounds to the nearest euro
  // expect(after).toBeLessThanOrEqual(before);
-
+*/
  
   // Step 7: Request a quote (confirmation in UI)
   await leasePage.requestQuote();
@@ -76,10 +78,9 @@ test('Beequip full user journey', async ({ page }) => {
   // Read the message body (Mailinator renders the HTML email inside an iframe)
   const bodyFrame = page.frameLocator('#html_msg_body, iframe#iframe-msg-body');
   const bodyText = await bodyFrame.locator('body').innerText();
-await page.pause();
+
   // Basic assertion on content — adapt to your real subject/body
   expect(bodyText).toMatch(/Offerte|Quote|Beequip/i);
 
-  // Uncomment if you want to inspect manually during dev:
-  // 
+  
 });
